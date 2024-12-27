@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Des 2024 pada 14.21
+-- Waktu pembuatan: 27 Des 2024 pada 14.54
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -48,7 +48,10 @@ INSERT INTO `daftar_poli` (`id`, `id_pasien`, `id_jadwal`, `keluhan`, `no_antria
 (7, 15, 9, 'kurang gizi', 1, '0'),
 (8, 16, 8, 'sakit gigi', 3, '0'),
 (9, 15, 14, 'sakit', 1, '1'),
-(10, 18, 14, 'sakit ', 2, '1');
+(10, 18, 14, 'sakit ', 2, '1'),
+(11, 19, 14, 'sakit', 3, '1'),
+(12, 19, 14, 'sakit', 4, '1'),
+(13, 19, 14, 'mules', 5, '1');
 
 -- --------------------------------------------------------
 
@@ -74,7 +77,13 @@ INSERT INTO `detail_periksa` (`id`, `id_periksa`, `id_obat`) VALUES
 (8, 6, 17),
 (9, 6, 18),
 (10, 7, 13),
-(11, 7, 17);
+(11, 7, 17),
+(12, 8, 12),
+(13, 8, 14),
+(14, 8, 17),
+(15, 9, 14),
+(16, 10, 14),
+(17, 10, 18);
 
 -- --------------------------------------------------------
 
@@ -106,7 +115,7 @@ INSERT INTO `dokter` (`id`, `nama`, `password`, `alamat`, `no_hp`, `id_poli`) VA
 (23, 'Dr.Mirrorjade', 'd2fa42762105475c89b1d0bb86aeee59', 'Jln. Kemenangan no11', '08913613313213', 22),
 (24, 'Dr.Labyrinth', 'afb213dc40d4e94c4266d7bf422ace3b', 'Jl.Kelamaan no21', '08951624614', 23),
 (25, 'DrNaseem', 'mieayam', 'jl.ngaliyan no11', '08213213173', 10),
-(26, 'naseemkw', 'da1db40eb6073ddb47fe4c3728b70e85', 'jl.nana', '0896235136', 10),
+(26, 'alfaent', 'da1db40eb6073ddb47fe4c3728b70e85', 'jl.semarang', '0896235136', 10),
 (27, 'mana', 'a01610228fe998f515a72dd730294d87', 'semarang', '082312313', 23);
 
 -- --------------------------------------------------------
@@ -139,7 +148,9 @@ INSERT INTO `jadwal_periksa` (`id`, `id_dokter`, `hari`, `jam_mulai`, `jam_seles
 (13, 19, 'Senin', '13:00:00', '15:30:00', 'Y'),
 (14, 26, 'Kamis', '11:00:00', '15:00:00', 'Y'),
 (15, 26, 'Rabu', '01:00:00', '07:00:00', 'N'),
-(16, 26, 'Rabu', '12:00:00', '20:00:00', 'N');
+(16, 26, 'Rabu', '12:00:00', '20:00:00', 'N'),
+(17, 26, 'Selasa', '06:00:00', '16:00:00', 'N'),
+(18, 26, 'Sabtu', '07:00:00', '15:00:00', 'N');
 
 -- --------------------------------------------------------
 
@@ -193,7 +204,8 @@ INSERT INTO `pasien` (`id`, `nama`, `password`, `alamat`, `no_ktp`, `no_hp`, `no
 (14, 'Dian', '827ccb0eea8a706c4c34a16891f84e7b', 'Semarang', '9876543', '0878', '202401-003'),
 (15, 'panji', '81dc9bdb52d04dc20036dbd8313ed055', 'ungaran', '1111', '6666666', '202412-004'),
 (16, 'nana', 'a01610228fe998f515a72dd730294d87', 'ungaran timur', '131233', '087361224', '202412-005'),
-(18, 'budi', 'a01610228fe998f515a72dd730294d87', 'semarang', '332213173', '0896446744', '202412-007');
+(18, 'budi', 'a01610228fe998f515a72dd730294d87', 'semarang', '332213173', '0896446744', '202412-007'),
+(19, 'nana', 'e10adc3949ba59abbe56e057f20f883e', 'Semarang', '3321223131831', '082361366123', '202412-008');
 
 -- --------------------------------------------------------
 
@@ -218,7 +230,10 @@ INSERT INTO `periksa` (`id`, `id_daftar_poli`, `tgl_periksa`, `catatan`, `biaya_
 (4, 6, '2024-01-08 14:15:00', 'sudah sedikit membaik, jangan lupa habiskan obatnya', 158000),
 (5, 4, '2024-12-10 09:57:00', 'perbanyak minum vitamin', 160000),
 (6, 9, '2024-12-12 13:11:00', 'minum obat secara rutin', 185000),
-(7, 10, '2024-12-13 20:07:00', 'rutin minum obat', 183000);
+(7, 10, '2024-12-13 20:07:00', 'rutin minum obat', 183000),
+(8, 11, '2024-12-24 13:17:00', 'cepat sembuh', 215000),
+(9, 12, '2024-12-27 18:59:00', 'cepat sembuh', 160000),
+(10, 13, '2024-12-27 20:14:00', 'banyak istirahat', 172000);
 
 -- --------------------------------------------------------
 
@@ -311,13 +326,13 @@ ALTER TABLE `poli`
 -- AUTO_INCREMENT untuk tabel `daftar_poli`
 --
 ALTER TABLE `daftar_poli`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_periksa`
 --
 ALTER TABLE `detail_periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `dokter`
@@ -329,7 +344,7 @@ ALTER TABLE `dokter`
 -- AUTO_INCREMENT untuk tabel `jadwal_periksa`
 --
 ALTER TABLE `jadwal_periksa`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `obat`
@@ -341,13 +356,13 @@ ALTER TABLE `obat`
 -- AUTO_INCREMENT untuk tabel `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `periksa`
 --
 ALTER TABLE `periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `poli`
