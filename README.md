@@ -7,7 +7,7 @@ password    : adminlogin
 # Login dokter beberapa
 username    password
 mana        1212
-naseemkw    mieayam
+alfaent    mieayam
 
 # Login pasien beberapa
 username    password
