@@ -13,3 +13,4 @@ alfaent    mieayam
 username    password
 budi        1212
 panji       1234
+nana        123456
