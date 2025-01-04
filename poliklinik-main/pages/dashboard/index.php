@@ -24,24 +24,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .banner-section {
-            font-family: 'Sora', sans-serif;
-            background-color: #b4c6d0;
-            color: #00000;
-            padding: 10% 0;
-            /* Responsive padding */
-            text-align: center;
-            display: flex;
-            /* Use flexbox to center content */
-            flex-direction: column;
-            /* Stack content vertically */
-            align-items: center;
-            /* Center content horizontally */
-            justify-content: center;
-            /* Center content vertically */
-            height: 100vh;
-            /* Set height to 100% of viewport height */
-        }
+        
 
         .floating-container {
             background-color: #F5F5F5;

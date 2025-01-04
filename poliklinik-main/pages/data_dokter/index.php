@@ -77,53 +77,46 @@ $id_dokter = $_SESSION['id'];
                                 </tr>
                                 <!-- Modal Edit Data Dokter -->
                                 <div class="modal fade" id="editModal<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editModalLabel">Edit Data Dokter</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Form edit data dokter -->
-                                                <form action="/poliklinik-main/pages/data_dokter/updateDokter.php" method="post">
-                                                    <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $data['id']; ?>" required>
-                                                    <div class="form-group">
-                                                        <label for="nama">Nama Dokter</label>
-                                                        <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $data['nama']; ?>" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="password">Password</label>
-                                                        <input type="password" class="form-control" id="password" name="password" value="" required> <!-- Make it a password field -->
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="alamat">Alamat</label>
-                                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $data['alamat']; ?>" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="no_hp">No HP</label>
-                                                        <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?php echo $data['no_hp']; ?>" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="id_poli">Nama Poli</label>
-                                                        <select class="form-control" id="id_poli" name="id_poli" required>
-                                                            <?php
-                                                            $query_poli = "SELECT * FROM poli";
-                                                            $result_poli = mysqli_query($mysqli, $query_poli);
-                                                            while ($poli = mysqli_fetch_assoc($result_poli)) {
-                                                                $selected = ($poli['id'] == $data['id_poli']) ? 'selected' : '';
-                                                                echo "<option value='{$poli['id']}' $selected>{$poli['nama_poli']}</option>";
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success">Simpan</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Data Dokter</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form edit data dokter -->
+                <form action="/poliklinik-main/pages/data_dokter/updateDokter.php" method="post">
+                    <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $data['id']; ?>" required>
+                    <div class="form-group">
+                        <label for="nama">Nama Dokter</label>
+                        <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $data['nama']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" value="" required> <!-- Make it a password field -->
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $data['alamat']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="no_hp">No HP</label>
+                        <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?php echo $data['no_hp']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_poli">Nama Poli</label>
+                        <input type="text" class="form-control" id="nama_poli" name="nama_poli" value="<?php echo $data['nama_poli']; ?>" disabled>
+                        <input type="hidden" name="id_poli" value="<?php echo $data['id_poli']; ?>">
+                    </div>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
                                 <?php } else { ?>
                                 <tr>
                                     <td colspan="7">Tidak ada data dokter yang ditemukan.</td>
